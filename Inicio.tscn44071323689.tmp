@@ -4185,7 +4185,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8um5k")
 }],
-"loop": false,
+"loop": true,
 "name": &"Attack_Down",
 "speed": 5.0
 }, {
@@ -4202,7 +4202,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3fvn8")
 }],
-"loop": false,
+"loop": true,
 "name": &"Attack_Side",
 "speed": 5.0
 }, {
@@ -4219,7 +4219,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ekof7")
 }],
-"loop": false,
+"loop": true,
 "name": &"Attack_Up",
 "speed": 5.0
 }, {
@@ -4610,9 +4610,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vblse")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -4627,7 +4627,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lk204")
 }],
-"loop": false,
+"loop": true,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -4644,7 +4644,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hwhss")
 }],
-"loop": false,
+"loop": true,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -4702,8 +4702,8 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je0kn"]
 size = Vector2(19, 29)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_je0kn"]
-radius = 86.3713
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tpli"]
+size = Vector2(253, 117)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_131q3"]
 
@@ -4726,6 +4726,15 @@ layer_3/tile_data = PackedInt32Array(983064, 4, 0, 1048600, 4, 1, 1114136, 4, 2,
 position = Vector2(350, 182)
 collision_mask = 8
 script = ExtResource("15_625qf")
+speed = null
+acceleration = null
+friction = null
+max_health = null
+attack_damage = null
+attack_cooldown = null
+knockback_force = null
+invincibility_duration = null
+attack_range = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1, 3)
@@ -4734,7 +4743,8 @@ shape = SubResource("CapsuleShape2D_8ya4p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-1, 4)
 sprite_frames = SubResource("SpriteFrames_5tpli")
-animation = &"Attack_Up"
+animation = &"Idle"
+frame_progress = 0.833077
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 3)
@@ -4761,8 +4771,7 @@ position = Vector2(0, 55)
 shape = SubResource("CapsuleShape2D_je0kn")
 
 [node name="AttackRayCast2D" type="RayCast2D" parent="Player"]
-position = Vector2(-1, 5)
-target_position = Vector2(-23, 0)
+target_position = Vector2(1, 22)
 collision_mask = 9
 
 [node name="TransitionZones" type="Node2D" parent="."]
@@ -4844,7 +4853,7 @@ show_percentage = false
 script = ExtResource("48_je0kn")
 
 [node name="Esqueleto" type="CharacterBody2D" parent="." groups=["enemies"]]
-position = Vector2(788, -77)
+position = Vector2(235, 196)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("48_5tpli")
@@ -4852,17 +4861,14 @@ script = ExtResource("48_5tpli")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Esqueleto"]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_mw8xb")
-animation = &"attack"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
+frame_progress = 0.286893
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Esqueleto"]
-visible = false
 position = Vector2(2, 0)
 shape = SubResource("CapsuleShape2D_2kawc")
 
 [node name="AttackArea" type="Area2D" parent="Esqueleto" groups=["enemy_attack"]]
-visible = false
 collision_layer = 10
 collision_mask = 5
 
@@ -4871,13 +4877,14 @@ position = Vector2(2.5, -1.5)
 shape = SubResource("RectangleShape2D_je0kn")
 
 [node name="DetectionArea" type="Area2D" parent="Esqueleto"]
+visible = false
 collision_layer = 0
 collision_mask = 137
 script = ExtResource("50_01gav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Esqueleto/DetectionArea"]
-position = Vector2(1, -1)
-shape = SubResource("CircleShape2D_je0kn")
+position = Vector2(101, -20)
+shape = SubResource("RectangleShape2D_5tpli")
 
 [node name="AttackCooldownTimer" type="Timer" parent="Esqueleto"]
 
@@ -4886,11 +4893,11 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Esqueleto/HurtBox"]
-position = Vector2(1, -3)
+position = Vector2(2, -1)
 shape = SubResource("CapsuleShape2D_131q3")
 
 [node name="AttackRayCast2D" type="RayCast2D" parent="Esqueleto"]
-target_position = Vector2(28, 0)
+target_position = Vector2(1, 21)
 collision_mask = 9
 
 [connection signal="body_entered" from="Esqueleto/DetectionArea" to="Esqueleto" method="_on_detecion_area_body_entered"]
