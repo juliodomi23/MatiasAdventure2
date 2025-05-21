@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://damu0eogv8lwb"
-path="res://.godot/imported/smoke_2_Anim.png-a8b441b7086be5bf6678c5746b3f167d.ctex"
+uid="uid://4lqwcspuoq62"
+path="res://.godot/imported/rock_in_water_05.png-e3956802a28b372148acc8ec72a899cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cute_Fantasy/House/Walls/smoke_2_Anim.png"
-dest_files=["res://.godot/imported/smoke_2_Anim.png-a8b441b7086be5bf6678c5746b3f167d.ctex"]
+source_file="res://sprites/objects/rock_in_water_05.png"
+dest_files=["res://.godot/imported/rock_in_water_05.png-e3956802a28b372148acc8ec72a899cb.ctex"]
 
 [params]
 

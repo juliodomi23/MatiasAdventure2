@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://damu0eogv8lwb"
-path="res://.godot/imported/smoke_2_Anim.png-a8b441b7086be5bf6678c5746b3f167d.ctex"
+uid="uid://bdi0y4kn7onxx"
+path="res://.godot/imported/objects.png-aad4b30c6e42f654910cacc4fa0b52d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cute_Fantasy/House/Walls/smoke_2_Anim.png"
-dest_files=["res://.godot/imported/smoke_2_Anim.png-a8b441b7086be5bf6678c5746b3f167d.ctex"]
+source_file="res://sprites/objects/objects.png"
+dest_files=["res://.godot/imported/objects.png-aad4b30c6e42f654910cacc4fa0b52d4.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
