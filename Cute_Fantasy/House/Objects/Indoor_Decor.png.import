@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8dgle1rtk4dr"
-valid=false
+path="res://.godot/imported/Indoor_Decor.png-616c22ea6bb88915053d24dcc7814b95.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Cute_Fantasy/House/Objects/Indoor_Decor.png"
+dest_files=["res://.godot/imported/Indoor_Decor.png-616c22ea6bb88915053d24dcc7814b95.ctex"]
 
 [params]
 

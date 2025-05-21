@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://damu0eogv8lwb"
-path="res://.godot/imported/smoke_2_Anim.png-a8b441b7086be5bf6678c5746b3f167d.ctex"
+uid="uid://bsiygucd6tsm6"
+path="res://.godot/imported/water-sheet.png-a50a787a3350545dd78491156577befb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cute_Fantasy/House/Walls/smoke_2_Anim.png"
-dest_files=["res://.godot/imported/smoke_2_Anim.png-a8b441b7086be5bf6678c5746b3f167d.ctex"]
+source_file="res://sprites/tilesets/water-sheet.png"
+dest_files=["res://.godot/imported/water-sheet.png-a50a787a3350545dd78491156577befb.ctex"]
 
 [params]
 

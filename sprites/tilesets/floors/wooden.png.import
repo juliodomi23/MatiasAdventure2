@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://damu0eogv8lwb"
-path="res://.godot/imported/smoke_2_Anim.png-a8b441b7086be5bf6678c5746b3f167d.ctex"
+uid="uid://fw1yteceshby"
+path="res://.godot/imported/wooden.png-11f204595cffa06fcaaeec79a49db865.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cute_Fantasy/House/Walls/smoke_2_Anim.png"
-dest_files=["res://.godot/imported/smoke_2_Anim.png-a8b441b7086be5bf6678c5746b3f167d.ctex"]
+source_file="res://sprites/tilesets/floors/wooden.png"
+dest_files=["res://.godot/imported/wooden.png-11f204595cffa06fcaaeec79a49db865.ctex"]
 
 [params]
 
