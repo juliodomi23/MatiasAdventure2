@@ -1,4 +1,4 @@
-[gd_scene load_steps=244 format=3 uid="uid://dkg4gflloe0nq"]
+
 
 [ext_resource type="Texture2D" uid="uid://ur8kkdkcwkfx" path="res://Cute_Fantasy/Tiles/Grass/Grass_Tiles_1.png" id="1_uloab"]
 [ext_resource type="Texture2D" uid="uid://1n0n0s2xytqj" path="res://Cute_Fantasy/Tiles/Grass/Grass_Tiles_1_Blob_TEST.png" id="2_ok7y7"]
@@ -4987,7 +4987,8 @@ sources/66 = SubResource("TileSetAtlasSource_53ddb")
 sources/67 = SubResource("TileSetAtlasSource_pjvux")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ya4p"]
-height = 24.0
+radius = 7.0
+height = 22.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d5dvy"]
 atlas = ExtResource("41_01gav")
@@ -5172,7 +5173,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8um5k")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Down",
 "speed": 5.0
 }, {
@@ -5189,7 +5190,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3fvn8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Side",
 "speed": 5.0
 }, {
@@ -5206,7 +5207,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ekof7")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Up",
 "speed": 5.0
 }, {
@@ -5326,13 +5327,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01gav"]
-radius = 16.0
-height = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_131q3"]
+size = Vector2(13, 19)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_je0kn"]
-radius = 13.0
-height = 32.0
+radius = 9.0
+height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7bb4"]
 size = Vector2(83, 39)
@@ -5598,9 +5598,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vblse")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -5615,7 +5615,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lk204")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -5632,7 +5632,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hwhss")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -5687,11 +5687,13 @@ animations = [{
 radius = 9.0
 height = 24.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_131q3"]
-height = 26.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_je0kn"]
+size = Vector2(19, 29)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tpli"]
-size = Vector2(575, 161.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_je0kn"]
+radius = 86.3713
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_131q3"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -5711,6 +5713,7 @@ layer_3/tile_data = PackedInt32Array(983064, 4, 0, 1048600, 4, 1, 1114136, 4, 2,
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(350, 182)
+collision_mask = 8
 script = ExtResource("15_625qf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -5720,8 +5723,7 @@ shape = SubResource("CapsuleShape2D_8ya4p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-1, 4)
 sprite_frames = SubResource("SpriteFrames_5tpli")
-animation = &"Idle"
-frame_progress = 0.833077
+animation = &"Attack_Up"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 3)
@@ -5730,19 +5732,27 @@ limit_left = -9999999
 position_smoothing_enabled = true
 script = ExtResource("40_ocw02")
 
-[node name="Hitbox" type="Area2D" parent="Player"]
+[node name="Hitbox" type="Area2D" parent="Player" groups=["player_attack"]]
 position = Vector2(101, 12)
+collision_layer = 5
+collision_mask = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox"]
-position = Vector2(-101, -8)
-shape = SubResource("CapsuleShape2D_01gav")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox" groups=["player_attack"]]
+position = Vector2(-101.5, -9.5)
+shape = SubResource("RectangleShape2D_131q3")
 
 [node name="HurtBox" type="Area2D" parent="Player"]
 position = Vector2(-1, -51)
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HurtBox" groups=["enemy_attack"]]
 position = Vector2(0, 55)
 shape = SubResource("CapsuleShape2D_je0kn")
+
+[node name="AttackRayCast2D" type="RayCast2D" parent="Player"]
+position = Vector2(-1, 5)
+target_position = Vector2(-23, 0)
+collision_mask = 9
 
 [node name="TransitionZones" type="Node2D" parent="."]
 visible = false
@@ -5822,34 +5832,54 @@ fill_mode = 1
 show_percentage = false
 script = ExtResource("48_je0kn")
 
-[node name="Esqueleto" type="CharacterBody2D" parent="."]
-position = Vector2(784, -97)
+[node name="Esqueleto" type="CharacterBody2D" parent="." groups=["enemies"]]
+position = Vector2(788, -77)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("48_5tpli")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Esqueleto"]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_mw8xb")
 animation = &"attack"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Esqueleto"]
+visible = false
 position = Vector2(2, 0)
 shape = SubResource("CapsuleShape2D_2kawc")
 
-[node name="AttackArea" type="Area2D" parent="Esqueleto"]
+[node name="AttackArea" type="Area2D" parent="Esqueleto" groups=["enemy_attack"]]
+visible = false
+collision_layer = 10
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Esqueleto/AttackArea"]
-position = Vector2(2, -1)
-shape = SubResource("CapsuleShape2D_131q3")
+position = Vector2(2.5, -1.5)
+shape = SubResource("RectangleShape2D_je0kn")
 
 [node name="DetectionArea" type="Area2D" parent="Esqueleto"]
-collision_layer = 255
-collision_mask = 255
+collision_layer = 0
+collision_mask = 137
 script = ExtResource("50_01gav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Esqueleto/DetectionArea"]
-position = Vector2(255.5, 62.25)
-shape = SubResource("RectangleShape2D_5tpli")
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_je0kn")
 
 [node name="AttackCooldownTimer" type="Timer" parent="Esqueleto"]
+
+[node name="HurtBox" type="Area2D" parent="Esqueleto"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Esqueleto/HurtBox"]
+position = Vector2(1, -3)
+shape = SubResource("CapsuleShape2D_131q3")
+
+[node name="AttackRayCast2D" type="RayCast2D" parent="Esqueleto"]
+target_position = Vector2(28, 0)
+collision_mask = 9
 
 [connection signal="body_entered" from="Esqueleto/DetectionArea" to="Esqueleto" method="_on_detecion_area_body_entered"]
